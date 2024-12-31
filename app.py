@@ -8,10 +8,10 @@ from difflib import SequenceMatcher
 app = Flask(__name__)
 CORS(app, resources={
     r"/*": {
-        "origins": ["http://localhost:3000", "http://127.0.0.1:3000", "https://fit.neu.edu.vn", "https://courses.neu.edu.vn/",
-                        "https://courses-omega-flax.vercel.app/"],
+        "origins": ["http://localhost:3000", "http://127.0.0.1:3000", "https://fit.neu.edu.vn", "https://courses.neu.edu.vn",
+                        "https://courses-omega-flax.vercel.app"],
         "methods": ["OPTIONS", "POST", "GET"],
-        "allow_headers": ["Content-Type"]
+        "allow_headers": ["Content-Type", "Authorization"]
     }
 })
 
@@ -243,4 +243,4 @@ def get_syllabus_list():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True, port=8017)
+    app.run(host="0.0.0.0", port=8017, ssl_context="adhoc")
